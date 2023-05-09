@@ -8,16 +8,43 @@
 </head>
 
  <div class="keys">
-    <div data-key="65" class="key">
-      <kbd>A</kbd>
-      <span class="sound">Ohgg</span>
+    <div data-key="1" class="key">
+      <span id="1" class="letter">ا</span>
+      <span class="sound">elif</span>
     </div>
   </div>
 
-    <audio data-key="65" src="sound/classic_hurt.mp3"></audio>
+    <audio data-key="1" src="sound/001-alif.mp3"></audio>
 
 
 <script>
+
+  function playSound(e) {
+    let elemClass = e.target.id;
+    let keyDiv = document.querySelector(`div[data-key="${elemClass}"]`)
+    let audio = document.querySelector(`audio[data-key="${elemClass}"]`);
+
+    keyDiv.classList.add('playing')
+    audio.currentTime = 0;
+    audio.play();
+    
+    elemClass ? console.log(keyDiv) : console.log("nothing");
+  }
+
+
+  document.addEventListener('click', (e) => {
+    playSound(e)
+  })
+
+
+  // function removeTransition(e) {
+  //   if (e.propertyName !== 'transform') return;
+  //   e.target.classList.remove('playing');
+  // }
+
+  // const keys = Array.from(document.querySelectorAll('.key'));
+  // keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  // window.addEventListener('keydown', playSound);
 </script>
 
 
